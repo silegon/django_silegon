@@ -1,0 +1,8 @@
+*~
+*.swp
+*.pyc
+*.log
+fabfile.py
+private*
+*.sql
+draft
