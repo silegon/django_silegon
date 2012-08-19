@@ -1,6 +1,0 @@
-<uwsgi>
-    <uwsgi-socket>127.0.0.1:9052</uwsgi-socket>
-    <chdir>/home/silegon/sites/online/django_silegon/</chdir>
-    <pythonpath>/usr/bin/python</pythonpath>
-    <module>wsgi</module>
-</uwsgi>
