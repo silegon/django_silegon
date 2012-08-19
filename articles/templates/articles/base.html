@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="col2">
 <div id="article-archives">
     <h2 class="title">{% trans 'Article Archives' %}</h2>
     {% get_article_archives as archives %}
@@ -25,7 +26,9 @@
     {% if forloop.last %}</ul>{% endif %}
     {% endfor %}
 </div>
+</div>
 
+<div class="col1">
 {% block articles-content %}{% endblock %}
 
 {% if paginator and page_obj %}
@@ -47,5 +50,6 @@
 {% endfor %}
 {% endifnotequal %}
 {% endif %}
+</div>
 {% endblock %}
 

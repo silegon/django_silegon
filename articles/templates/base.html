@@ -1,40 +1,90 @@
 {% load article_tags %}
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>My Site - {% block title %}Welcome{% endblock %}</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 <meta name="language" content="en-US" />
 <meta name="keywords" content="{% block meta-keywords %}{% endblock %}" />
 <meta name="description" content="{% block meta-description %}{% endblock %}" />
 
-<title>My Site - {% block title %}Welcome{% endblock %}</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/screen.css" title="default" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/pygments.css" media="screen" />
+
 {% block extra-head %}{% endblock %}
 </head>
 <body>
-<h1><a href="/">My Site</a></h1>
-{% block content %}{% endblock %}
-{% block sidebar %}
-    {% block recent_articles %}
-    <li>
-        <h2>Recent Articles</h2>
-        {% get_articles 10 as recent %}
-        {% for article in recent %}
-        {% if forloop.first %}<ul>{% endif %}
-            <li><a href="{{ article.get_absolute_url }}" title="Read this article">{{ article.title }}</a></li>
-        {% if forloop.last %}</ul>{% endif %}
-        {% endfor %}
-    </li>
-    {% endblock %}
+<div id="header">
+  <h1><a href="/">Code Koala</a></h1>
+  <div id="search">
+    <form action="http://www.codekoala.com/search/results/" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-7828344619183032:1lqf5euq6n3" />
+        <input type="hidden" name="cof" value="FORID:11" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="31" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+    <script type="application/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+  </div>
+</div>
+<div id="top-nav">
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/about/">About Me</a></li>
+  <li><a href="/contact/">Contact Me</a></li>
+</ul>
+</div>
+<div class="colmask blogstyle">
+    <div class="colmid">
+        <div class="colextra">
+            <div class="colleft">
+                    {% block content %}{% endblock %}
+                    <!--
+                <div class="col4"></div>
+                <div class="col2">
+                </div>
+                -->
+                <div class="col3">
+                    {% block sidebar %}
+                    <!-- recent_articles -->
+                    {% block recent_articles %}
+                    <h2>Recent Articles</h2>
+                    {% get_articles 10 as recent %}
+                        {% for article in recent %}
+                        {% if forloop.first %}<ul>{% endif %}
+                            <li><a href="{{ article.get_absolute_url }}" title="Read this article">{{ article.title }}</a></li>
+                            {% if forloop.last %}</ul>{% endif %}
+                        {% endfor %}
+                    </li>
+                    {% endblock %}
+                    <!-- recent_articles -->
 
-    {% block article_tags %}
-    <li>
-        <h2>Tag Cloud</h2>
-        {% tag_cloud %}
-    </li>
-    {% endblock %}
-{% endblock %}
+                    {% block article_tags %}
+                    <h2>Tag Cloud</h2>
+                    {% tag_cloud %}
+                    {% endblock %}
+                    {% endblock %}
+                </div>
+                <div style="clear:both"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% block footer %}
-<p>Copyright &copy; {% now "Y" %} Me. All rights reserved.</p>
+<div id="footer">
+  <p>
+    Copyright &copy; 2012 Josh VanderLinden.  All rights reserved.
+    <a href="/terms/">Terms of Use</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="http://twitter.com/codekoala">Twitter</a>
+    <a href="http://www.linkedin.com/in/joshvanderlinden">LinkedIn</a>
+  </p>
+</div>
 {% endblock %}
 </body>
 </html>
