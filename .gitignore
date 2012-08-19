@@ -9,3 +9,4 @@ local*
 *.context
 draft
 settings.py
+django_silegon/media

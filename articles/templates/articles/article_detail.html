@@ -28,6 +28,8 @@
 {% block footer %}
 {{ block.super }}
 
+<script type='text/javascript' charset='utf-8' src='http://open.denglu.cc/connect/commentcode?appid=53403denSB1O0KjvZpfz9efVTc7lj5'></script>
+{% comment %}
 <script type="application/javascript">
 {% if disqus_forum %}
     //<![CDATA[
@@ -42,6 +44,7 @@
         document.write('<script charset="utf-8" type="application/javascript" src="http://disqus.com/forums/{{ disqus_forum }}/get_num_replies.js' + query + '"></' + 'script>');
     })();
     //]]>
-    </script>
 {% endif %}
+{% endcomment %}
+</script>
 {% endblock %}

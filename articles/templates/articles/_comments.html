@@ -1,4 +1,6 @@
 {% if disqus_forum %}
+<script type='text/javascript' charset='utf-8' src='http://open.denglu.cc/connect/commentcode?appid=53403denSB1O0KjvZpfz9efVTc7lj5'></script>
+{% comment %}
 <div id="disqus_thread"></div>
 <script type="application/javascript">
 var disqus_identifier = {{ article.id }};
@@ -6,5 +8,6 @@ var disqus_identifier = {{ article.id }};
 <script type="application/javascript" src="http://disqus.com/forums/{{ disqus_forum }}/embed.js"></script>
 <noscript><a href="http://disqus.com/forums/{{ disqus_forum }}/?url=ref">View the discussion thread.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
+{% endcomment %}
 {% endif %}
 

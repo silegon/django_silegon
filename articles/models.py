@@ -1,3 +1,4 @@
+#coding:utf8
 from hashlib import sha1
 from datetime import datetime
 import logging
@@ -12,7 +13,7 @@ from django.contrib.markup.templatetags import markup
 from django.contrib.sites.models import Site
 from django.core.cache import cache
 from django.conf import settings
-from django.template.defaultfilters import slugify, striptags
+from django.template.defaultfilters import striptags
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import truncate_html_words
 
@@ -113,6 +114,7 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name_plural = "标签"
 
 class ArticleStatusManager(models.Manager):
 
@@ -133,7 +135,8 @@ class ArticleStatus(models.Model):
 
     class Meta:
         ordering = ('ordering', 'name')
-        verbose_name_plural = _('Article statuses')
+        #verbose_name_plural = _('Article statuses')
+        verbose_name_plural = "文章状态" 
 
     def __unicode__(self):
         if self.is_live:
@@ -176,7 +179,7 @@ MARKUP_HELP = _("""Select the type of markup you are using in this article.
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.SlugField(unique_for_year='publish_date')
+    slug = models.CharField(max_length=100, unique_for_year='publish_date')
     status = models.ForeignKey(ArticleStatus, default=ArticleStatus.objects.default)
     author = models.ForeignKey(User)
     sites = models.ManyToManyField(Site, blank=True)
@@ -282,7 +285,11 @@ class Article(models.Model):
         if not self.id:
             # make sure we have a slug first
             if not len(self.slug.strip()):
-                self.slug = slugify(self.title)
+                value = self.title
+                value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
+                value = re.sub('[-\s]+', '-', value)
+
+                self.slug = value.encode('utf-8')
 
             self.slug = self.get_unique_slug(self.slug, using)
             return True
@@ -493,6 +500,7 @@ class Article(models.Model):
     class Meta:
         ordering = ('-publish_date', 'title')
         get_latest_by = 'publish_date'
+        verbose_name_plural = "文章"
 
 class Attachment(models.Model):
     upload_to = lambda inst, fn: 'attach/%s/%s/%s' % (datetime.now().year, inst.article.slug, fn)
@@ -503,6 +511,7 @@ class Attachment(models.Model):
 
     class Meta:
         ordering = ('-article', 'id')
+        verbose_name_plural = "附件"
 
     def __unicode__(self):
         return u'%s: %s' % (self.article, self.caption)
