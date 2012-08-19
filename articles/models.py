@@ -83,8 +83,8 @@ class Tag(models.Model):
     def clean_tag(name):
         """Replace spaces with dashes, in case someone adds such a tag manually"""
 
-        name = name.replace(' ', '-').encode('ascii', 'ignore')
-        name = TAG_RE.sub('', name)
+        name = name.replace(' ', '-').encode('utf-8', 'ignore')
+        #name = TAG_RE.sub('', name)
         clean = name.lower().strip(", ")
 
         log.debug('Cleaned tag "%s" to "%s"' % (name, clean))
@@ -121,7 +121,7 @@ class ArticleStatusManager(models.Manager):
 
         if len(default) == 0:
             return None
-        else:
+        #else:
             return default[0]
 
 class ArticleStatus(models.Model):

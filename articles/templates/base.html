@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US">
 <head>
-<title>My Site - {% block title %}Welcome{% endblock %}</title>
+<title>周凯华的博客 - {% block title %}Welcome{% endblock %}</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 <meta name="language" content="en-US" />
 <meta name="keywords" content="{% block meta-keywords %}{% endblock %}" />
@@ -16,9 +16,9 @@
 </head>
 <body>
 <div id="header">
-  <h1><a href="/">Code Koala</a></h1>
+  <h1><a href="/">欠码的博客</a></h1>
   <div id="search">
-    <form action="http://www.codekoala.com/search/results/" id="cse-search-box">
+    <form action="http://forpm.net/search/results/" id="cse-search-box">
       <div>
         <input type="hidden" name="cx" value="partner-pub-7828344619183032:1lqf5euq6n3" />
         <input type="hidden" name="cof" value="FORID:11" />
@@ -32,10 +32,12 @@
 </div>
 <div id="top-nav">
 <ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/">Blog</a></li>
-  <li><a href="/about/">About Me</a></li>
-  <li><a href="/contact/">Contact Me</a></li>
+  <li><a href="/">主页</a></li>
+  <li><a href="/blog/">博客</a></li>
+  <li><a href="/about/">关于我</a></li>
+  <!--
+  <li><a href="/contact/">联系我</a></li>
+  -->
 </ul>
 </div>
 <div class="colmask blogstyle">
@@ -52,11 +54,11 @@
                     {% block sidebar %}
                     <!-- recent_articles -->
                     {% block recent_articles %}
-                    <h2>Recent Articles</h2>
+                    <h2>最近的文章</h2>
                     {% get_articles 10 as recent %}
                         {% for article in recent %}
                         {% if forloop.first %}<ul>{% endif %}
-                            <li><a href="{{ article.get_absolute_url }}" title="Read this article">{{ article.title }}</a></li>
+                            <li><a href="{{ article.get_absolute_url }}" title="阅读这篇文章">{{ article.title }}</a></li>
                             {% if forloop.last %}</ul>{% endif %}
                         {% endfor %}
                     </li>
@@ -64,7 +66,7 @@
                     <!-- recent_articles -->
 
                     {% block article_tags %}
-                    <h2>Tag Cloud</h2>
+                    <h2>所有标签</h2>
                     {% tag_cloud %}
                     {% endblock %}
                     {% endblock %}
@@ -78,9 +80,9 @@
 {% block footer %}
 <div id="footer">
   <p>
-    Copyright &copy; 2012 Josh VanderLinden.  All rights reserved.
-    <a href="/terms/">Terms of Use</a>
-    <a href="/privacy/">Privacy</a>
+  原版：<a href="http://www.codekoala.com/">codekaola</a>&amp<a href="https://bitbucket.org/codekoala/django-articles">django-articles</a>
+  改版：<a href="https://github.com/silegon/django_silegon">django_silegon</a>
+  博主：
     <a href="http://www.douban.com/people/forpm/">douban</a>
     <a href="https://github.com/silegon">github</a>
   </p>

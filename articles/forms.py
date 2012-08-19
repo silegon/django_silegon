@@ -1,3 +1,4 @@
+#coding:utf-8
 import logging
 
 from django import forms
@@ -42,7 +43,7 @@ class ArticleAdminForm(forms.ModelForm):
 
         tags = [tag(t.strip()) for t in self.cleaned_data['tags'].split() if len(t.strip())]
 
-        log.debug('Tagging Article %s with: %s' % (self.cleaned_data['title'], tags))
+        log.debug('Tagging Article %s with: %s' % (self.cleaned_data['title'].encode('utf-8'), tags))
         self.cleaned_data['tags'] = tags
         return self.cleaned_data['tags']
 

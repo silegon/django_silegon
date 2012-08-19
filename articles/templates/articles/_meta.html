@@ -1,43 +1,52 @@
 {% load i18n humanize %}
 
 <div id="article-meta">
-  <h4>Meta</h4>
+  <h4>相关信息</h4>
 
-  <p><strong>{% trans 'Published' %}</strong>: {{ article.publish_date|naturalday }}</p>
+  <p><strong>{% trans '发布时间' %}</strong>: {{ article.publish_date|naturalday }}</p>
 
-  <p><strong>{% trans 'Author' %}</strong>: <a href="{% url articles_by_author article.author.username %}" title="{% trans 'Read other articles by this author' %}">{{ article.author.get_name }}</a></p>
+  <p><strong>{% trans '作者' %}</strong>: <a href="{% url articles_by_author article.author.username %}" title="{% trans 'Read other articles by this author' %}">{{ article.author.get_name }}</a></p>
 
-  <p><strong>{% trans 'Comments' %}</strong>: <a href="#disqus_thread">&nbsp;</a></p>
+  <p><strong>{% trans '评论数' %}</strong>: <a href="#disqus_thread">&nbsp;</a></p>
 
-  <p><strong>{% trans 'Word Count' %}</strong>: {{ article.word_count|intcomma }}</p>
+  {% comment %}
+  <p><strong>{% trans '字数统计' %}</strong>: {{ article.word_count|intcomma }}</p>
+  {% endcomment %}
 
   {% if article.get_next_article %}
   <p>
-    <strong>{% trans 'Next' %}</strong>:
+    <strong>{% trans '下一篇' %}</strong>:
     <a href="{{ article.get_next_article.get_absolute_url }}">{{ article.get_next_article.title }}</a>
   </p>
   {% endif %}
 
   {% if article.get_previous_article %}
   <p>
-    <strong>{% trans 'Previous' %}</strong>:
+    <strong>{% trans '上一篇' %}</strong>:
     <a href="{{ article.get_previous_article.get_absolute_url }}">{{ article.get_previous_article.title }}</a>
   </p>
   {% endif %}
 
   {% if article.use_addthis_button and article.addthis_username %}
-  <!-- AddThis Button BEGIN -->
-  <div>
-    <script type="application/javascript">var addthis_pub="{{ article.addthis_username }}";</script>
-    <a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
-    <script type="application/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script>
-  </div>
-  <!-- AddThis Button END -->
+<!-- Baidu Button BEGIN -->
+    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+        <span class="bds_more">分享到：</span>
+        <a class="bds_douban"></a>
+        <a class="bds_tsina"></a>
+        <a class="bds_baidu"></a>
+        <a class="bds_renren"></a>
+        <a class="shareCount"></a>
+    </div>
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
   {% endif %}
+<div style="clear:both"></div>
 
-  <script type="application/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-
-  <h4>{% trans 'Tags' %}</h4>
+  <h4>{% trans '标签' %}</h4>
   <p>{% if article.tags.count %}{% for tag in article.tags.all %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}{% else %}None{% endif %}</p>
 
   {% for fu in article.followups.live %}

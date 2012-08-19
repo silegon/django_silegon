@@ -1,7 +1,7 @@
 {% extends 'articles/base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans 'Articles Tagged' %}: {{ tag.name }}{% endblock %}
+{% block title %}{{ tag.name }}:相关的文章{% endblock %}
 {% block extra-head %}
 {{ block.super }}
 <link rel="alternate" type="application/rss+xml" title="Blog Articles Tagged '{{ tag.name }}' RSS Feed" href="{% url articles_rss_feed_tag tag.rss_name %}" />
@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block articles-content %}
-<h2>{% trans 'Articles Tagged' %} <em>{{ tag.name }}</em>{% ifnotequal paginator.num_pages 1 %}, {% trans 'page' %} {{ page_obj.number }}{% endifnotequal %}</h2>
+<h2>{% trans '文章标签' %} <em>{{ tag.name }}</em>{% ifnotequal paginator.num_pages 1 %}, {% trans '页' %} {{ page_obj.number }}{% endifnotequal %}</h2>
 
 {% for article in page_obj.object_list %}
 {% include 'articles/_articles.html' %}

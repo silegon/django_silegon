@@ -69,6 +69,20 @@ def display_blog_page(request, tag=None, username=None, year=None, month=None, p
 
     return response
 
+def blog_index(request, template="articles/article_detail.html"):
+    article = Article.objects.live(user=request.user).latest(field_name='publish_date')
+
+    if article.login_required and not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('auth_login') + '?next=' + request.path)
+
+    variables = RequestContext(request, {
+        'article': article,
+        'disqus_forum': getattr(settings, 'DISQUS_FORUM_SHORTNAME', None),
+    })
+    response = render_to_response(template, variables)
+
+    return response
+
 def display_article(request, year, slug, template='articles/article_detail.html'):
     """Displays a single article."""
 
