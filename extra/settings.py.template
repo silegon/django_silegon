@@ -6,17 +6,17 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('silegon', 'silegon@gmail.com')
+    ('{{username}}', '{{user_email}}')
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'django_silegon',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'root',                  # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.{{database_engine}}', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '{{database_name}}',                      # Or path to database file if using sqlite3.
+        'USER': '{{database_user}}',                      # Not used with sqlite3.
+        'PASSWORD': '{{database_password}}',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -29,12 +29,11 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Asia/Shanghai'
+TIME_ZONE = '{{time_zone}}'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-#LANGUAGE_CODE = 'zh-cn'
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = '{{language_code}}'
 
 SITE_ID = 1
 
@@ -66,7 +65,7 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://127.0.0.1:25000/static/'
+STATIC_URL = '{{site_url}}static/'
 
 #ADMIN_MEDIA_PREFIX = '/static/admin/'
 
@@ -159,10 +158,10 @@ LOGGING = {
 }
 
 #Change this to be your Disqus site's short name
-DISQUS_FORUM_SHORTNAME = 'djangosilegon'
+DISQUS_FORUM_SHORTNAME = '{{disqus_forum_shortname}}'
 
 #Put your Disqus API key here (only necessary if you're porting comments from django.contrib.comments)
-DISQUS_USER_API_KEY = 'baayCTbwKZLNCZfg8NYqAjZ8YIKroQJXv0g0bB75vFFyfONoopnGBjMv4u4eNbrB'
+DISQUS_USER_API_KEY = '{{disqus_user_api_key}}'
 
 #Configure articles from email
 #ARTICLES_FROM_EMAIL = {
