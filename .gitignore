@@ -8,6 +8,9 @@ local*
 *.sql
 *.context
 *.pid
+*.json
+backup/*
 draft
 settings.py
-django_silegon/media
+extra/backup/*
+django_silegon/media/*

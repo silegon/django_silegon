@@ -5,12 +5,15 @@
 <title>欠码的博客 - {% block title %}Welcome{% endblock %}</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 <meta name="language" content="en-US" />
+<meta name="viewport" content = "width=device-width">
 <meta name="keywords" content="{% block meta-keywords %}{% endblock %}" />
 <meta name="description" content="{% block meta-description %}{% endblock %}" />
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/screen.css" title="default" />
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/pygments.css" media="screen" />
+<script type="text/javascript" src="{{ STATIC_URL }}articles/js/jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}articles/js/columns.js"></script>
 
 {% block extra-head %}{% endblock %}
 </head>
