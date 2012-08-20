@@ -35,7 +35,7 @@ def fill_conf(template_file, context_file):
     output_f.close()
 
 if __name__ == '__main__':
-    fill_conf('settings.py.template', 'settings.py.context')
+    fill_conf('settings.py.template', 'settings.py.debug.context')
     print 'Done'
     
     
