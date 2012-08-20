@@ -3,4 +3,5 @@
     <chdir>/home/silegon/sites/online/django_silegon/</chdir>
     <pythonpath>/usr/bin/python</pythonpath>
     <module>wsgi</module>
+    <daemonize>django_silegon_uwsgi.log</daemonize>
 </uwsgi>
