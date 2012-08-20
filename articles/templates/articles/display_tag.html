@@ -11,6 +11,8 @@
 {% block articles-content %}
 <h2>{% trans '文章标签' %} <em>{{ tag.name }}</em>{% ifnotequal paginator.num_pages 1 %}, {% trans '页' %} {{ page_obj.number }}{% endifnotequal %}</h2>
 
+<div class="col4"></div>
+
 {% for article in page_obj.object_list %}
 {% include 'articles/_articles.html' %}
 {% endfor %}
