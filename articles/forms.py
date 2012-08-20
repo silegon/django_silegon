@@ -14,7 +14,7 @@ def tag(name):
 
     log.debug('Looking for Tag with slug "%s"...' % (slug,))
     t, created = Tag.objects.get_or_create(slug=slug, defaults={'name': name})
-    log.debug('Found Tag %s. Name: %s Slug: %s Created: %s' % (t.pk, t.name.encode("utf-8"), t.slug.encode("utf-8"), created))
+    #log.debug('Found Tag %s. Name: %s Slug: %s Created: %s' % (t.pk, t.name.encode("utf-8"), t.slug.encode("utf-8"), created))
 
     if not t.name:
         t.name = name
