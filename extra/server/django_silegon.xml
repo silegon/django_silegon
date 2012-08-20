@@ -4,4 +4,5 @@
     <pythonpath>/usr/bin/python</pythonpath>
     <module>wsgi</module>
     <daemonize>django_silegon_uwsgi.log</daemonize>
+    <pidfile>django_silegon.pid</pidfile>
 </uwsgi>
