@@ -1,0 +1,40 @@
+@media screen and (min-width: 1600px) {
+  body {
+    font-size: 1.0em;
+  }
+
+  .blogstyle .colmid {
+    right:15%;
+    background:#f4f4f4;
+  }
+  .blogstyle .colextra {
+    right:15%;
+    background:#ddd;
+  }
+  .blogstyle .colleft {
+    right:30%;
+    background:#fff;
+  }
+  .blogstyle .col1 {
+    width:37.5%;
+    left:61%;
+    /*border: 1px solid #f00;*/
+  }
+  .blogstyle .col2 {
+    width:12.5%;
+    left:66%;
+    /*border: 1px solid #0f0;*/
+  }
+  .blogstyle .col3 {
+    width:12%;
+    left:69%;
+    /*border: 1px solid #00f;*/
+  }
+  .blogstyle .col4 {
+    display: block;
+    clear: none;
+    width:27.5%;
+    left:64%;
+    /*border: 1px solid #f0f;*/
+  }
+}

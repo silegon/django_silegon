@@ -438,7 +438,7 @@ class Article(models.Model):
                         log.warn('Failed to retrieve the title for "%s"; using link text "%s"' % (url, title))
 
                 # cache the page title for a week
-                log.debug('Using "%s" as title for "%s"' % (title, url))
+                # log.debug('Using "%s" as title for "%s"' % (title.decode('utf-8'), url.decode('utf-8')))
                 cache.set(key, title, 604800)
 
             # add it to the list of links and titles

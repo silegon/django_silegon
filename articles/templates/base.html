@@ -10,16 +10,32 @@
 <meta name="description" content="{% block meta-description %}{% endblock %}" />
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/screen.css" title="default" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/screen_v201208211629.css" title="default" />
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/pygments.css" media="screen" />
 <script type="text/javascript" src="{{ STATIC_URL }}articles/js/jquery.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}articles/js/columns.js"></script>
 
 {% block extra-head %}{% endblock %}
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20612320-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 <body>
 <div id="header">
   <h1><a href="/">欠码的博客</a></h1>
+  <div id="search"></div>
+  {% comment %}
   <div id="search">
     <form action="http://forpm.net/search/results/" id="cse-search-box">
       <div>
@@ -32,6 +48,7 @@
     </form>
     <script type="application/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
   </div>
+  {% endcomment %}
 </div>
 <div id="top-nav">
 <ul>
