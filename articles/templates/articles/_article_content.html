@@ -6,14 +6,18 @@
 </div>
 
 {% for att in article.attachments.all %}
-{% if forloop.first %}<div id="article-attachments">
+{% if forloop.first %}
+<div id="article-attachments">
     <h3>附件</h3>
-    <ul>{% endif %}
+    <ul>
+{% endif %}
         <li id="attachment-{{ forloop.counter }}" class="attachment ct_{{ att.content_type_class }}">
             <a href="{{ att.attachment.url }}" class="attachment-link">{{ att.filename }}</a>
             <span class="attachment-size">Size: {{ att.attachment.size|filesizeformat }}</span>
         </li>
-    {% if forloop.last %}</ul>
-</div>{% endif %}
+{% if forloop.last %}
+    </ul>
+</div>
+{% endif %}
 {% endfor %}
 

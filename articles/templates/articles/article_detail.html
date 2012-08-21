@@ -9,15 +9,30 @@
 {% for tag in article.tags.all %}
 <link rel="alternate" type="application/rss+xml" title="Blog Articles Tagged '{{ tag.name }}' RSS Feed" href="{% url articles_rss_feed_tag tag.rss_name %}" />
 <link rel="alternate" type="application/atom+xml" title="Blog Articles Tagged '{{ tag.name }}' Atom Feed" href="{% url articles_atom_feed_tag tag.rss_name %}" />{% endfor %}
-<link rel="stylesheet" href="{{ STATIC_URL }}articles/css/wider.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}articles/css/wider_v201208211629.css" />
 <style type="text/css">
     .blogstyle .col4 {display:block;}
 </style>
+<!-- Take this IE users! (use a real browser!!!) //-->
+<!--[if IE]>
+<script type="text/javascript">
+$(document).ready(function () {
+  $('#dieIE').css({display: 'block'});
+  $('body').children().each(function () {
+    $(this).removeClass();
+    var eid = $(this).attr('id');
+    $(this).attr('id', eid + 'dieIE');
+  });
+});
+</script>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}articles/css/ie.css" />
+<![endif]-->
 {% endblock %}
 
 {% block content %}
 
 <div class="col1">
+    <div id="dieIE" style="display:none; font-size: 3em; line-height: 3em; text-align: center;">为了能多做些有意义的事情，请使用非IE浏览器。</div>
 {% include 'articles/_article_content.html' %}
 </div>
 <div class="col2">
