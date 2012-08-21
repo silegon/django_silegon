@@ -6,7 +6,7 @@ body {
   background:#fff;
   font-size: 1em;
   line-height: 1.2em;
-  font-family: Tahoma, Helvetica, Arial, sans-serif;
+  font-family:  Tahoma, Helvetica, Arial, sans-serif;
   margin: 0 0 1.6em;
 }
 a {
@@ -51,6 +51,9 @@ img {
   display: inline;
   margin: 3px;
 }
+.months li a {
+    white-space:nowrap;
+}
 
 .pagination-pages { text-align: center; }
 .pagination-pages li,
@@ -58,14 +61,15 @@ img {
 .pagination-pages .current-page { font-weight: bold; color: #f9cc2c; }
 
 #articles-tag-cloud { text-align: center; margin: 0 5px; }
+#articles-tag-cloud a { white-space:nowrap; }
 .tag-cloud-0 { font-size: 70%; }
-.tag-cloud-1 { font-size: 95%; }
-.tag-cloud-2 { font-size: 110%; }
-.tag-cloud-3 { font-size: 130%; }
-.tag-cloud-4 { font-size: 150%; }
-.tag-cloud-5 { font-size: 175%; }
-.tag-cloud-6 { font-size: 295%; }
-.tag-cloud-7 { font-size: 215%; }
+.tag-cloud-1 { font-size: 77%; }
+.tag-cloud-2 { font-size: 84%; }
+.tag-cloud-3 { font-size: 93%; }
+.tag-cloud-4 { font-size: 102%; }
+.tag-cloud-5 { font-size: 112%; }
+.tag-cloud-6 { font-size: 124%; }
+.tag-cloud-7 { font-size: 136%; }
 
 div.admonition, div.warning {
   font-size: 0.9em;
