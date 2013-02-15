@@ -1,9 +1,9 @@
-{% load i18n humanize %}
+{% load i18n %}
 
 <div id="article-meta">
   <h4>相关信息</h4>
 
-  <p><strong>{% trans '发布时间' %}</strong>: {{ article.publish_date|naturalday }}</p>
+  <p><strong>{% trans '发布时间' %}</strong>: {{ article.publish_date|date:"Y/m/j" }}</p>
 
   <p><strong>{% trans '作者' %}</strong>: <a href="{% url articles_by_author article.author.username %}" title="{% trans 'Read other articles by this author' %}">{{ article.author.get_name }}</a></p>
 
@@ -54,7 +54,7 @@
 
   <ul class="followups">{% endif %}
     <li>
-      <a href="{{ fu.get_absolute_url }}" title="{% trans 'Read this follow-up article' %}">{{ fu.title }}</a>, {% trans 'posted' %} {{ fu.publish_date|naturalday }}
+      <a href="{{ fu.get_absolute_url }}" title="{% trans 'Read this follow-up article' %}">{{ fu.title }}</a>, {% trans 'posted' %} {{ fu.publish_date|date:"Y/m/j" }}
     </li>
   {% if forloop.last %}</ul>{% endif %}
   {% endfor %}
@@ -64,7 +64,7 @@
 
   <ul class="followups">{% endif %}
     <li>
-      <a href="{{ fu.get_absolute_url }}" title="{% trans 'Read this article' %}">{{ fu.title }}</a>, {% trans 'posted' %} {{ fu.publish_date|naturalday }}
+      <a href="{{ fu.get_absolute_url }}" title="{% trans 'Read this article' %}">{{ fu.title }}</a>, {% trans 'posted' %} {{ fu.publish_date|date:"Y/m/j" }}
     </li>
   {% if forloop.last %}</ul>{% endif %}
   {% endfor %}
@@ -74,7 +74,7 @@
 
   <ul class="related-articles">{% endif %}
     <li>
-      <a href="{{ ra.get_absolute_url }}" title="{% trans 'Read this related article' %}">{{ ra.title }}</a>, {% trans 'posted' %}  {{ ra.publish_date|naturalday }}
+      <a href="{{ ra.get_absolute_url }}" title="{% trans 'Read this related article' %}">{{ ra.title }}</a>, {% trans 'posted' %}  {{ ra.publish_date|date:"Y/m/j" }}
     </li>
   {% if forloop.last %}</ul>{% endif %}
   {% endfor %}

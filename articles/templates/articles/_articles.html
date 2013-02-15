@@ -3,7 +3,7 @@
     <li>
         <h3><a href="{{ article.get_absolute_url }}" title="最近的文章">{{ article.title }}</a></h3>
         <div class="quiet">
-            时间:{{ article.publish_date|date:"Y-m-j H:i" }}&nbsp
+            时间:{{ article.publish_date|date:"Y/m/j" }}&nbsp
             作者:<a href="{% url articles_by_author article.author.username %}" title="{{ article.author.get_name }}的文章">{{ article.author.get_name }}</a>
         </div>
     </li>
