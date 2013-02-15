@@ -29,11 +29,11 @@ MARKUP_MARKDOWN = 'm'
 MARKUP_REST = 'r'
 MARKUP_TEXTILE = 't'
 MARKUP_OPTIONS = getattr(settings, 'ARTICLE_MARKUP_OPTIONS', (
-        (MARKUP_HTML, _('HTML/Plain Text')),
-        (MARKUP_MARKDOWN, _('Markdown')),
-        (MARKUP_REST, _('ReStructured Text')),
-        (MARKUP_TEXTILE, _('Textile'))
-    ))
+    (MARKUP_HTML, _('HTML/Plain Text')),
+    (MARKUP_MARKDOWN, _('Markdown')),
+    (MARKUP_REST, _('ReStructured Text')),
+    (MARKUP_TEXTILE, _('Textile'))
+))
 MARKUP_DEFAULT = getattr(settings, 'ARTICLE_MARKUP_DEFAULT', MARKUP_TEXTILE)
 
 USE_ADDTHIS_BUTTON = getattr(settings, 'USE_ADDTHIS_BUTTON', True)
@@ -41,8 +41,8 @@ ADDTHIS_USE_AUTHOR = getattr(settings, 'ADDTHIS_USE_AUTHOR', True)
 DEFAULT_ADDTHIS_USER = getattr(settings, 'DEFAULT_ADDTHIS_USER', None)
 
 # regex used to find links in an article
-LINK_RE = re.compile('<a.*?href="(.*?)".*?>(.*?)</a>', re.I|re.M)
-TITLE_RE = re.compile('<title.*?>(.*?)</title>', re.I|re.M)
+LINK_RE = re.compile('<a.*?href="(.*?)".*?>(.*?)</a>', re.I | re.M)
+TITLE_RE = re.compile('<title.*?>(.*?)</title>', re.I | re.M)
 TAG_RE = re.compile('[^a-z0-9\-_\+\:\.]?', re.I)
 
 log = logging.getLogger('articles.models')
@@ -153,10 +153,10 @@ class ArticleManager(models.Manager):
         """
         now = datetime.now()
         return self.get_query_set().filter(
-                Q(expiration_date__isnull=True) |
-                Q(expiration_date__gte=now),
-                publish_date__lte=now,
-                is_active=True)
+            Q(expiration_date__isnull=True) |
+            Q(expiration_date__gte=now),
+            publish_date__lte=now,
+            is_active=True)
 
     def live(self, user=None):
         """Retrieves all live articles"""
@@ -530,4 +530,3 @@ class Attachment(models.Model):
             content_type = 'text_plain'
 
         return content_type
-
